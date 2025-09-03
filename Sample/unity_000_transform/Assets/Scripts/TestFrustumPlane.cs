@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+[RequireComponent(typeof(Camera))]
+public class TestFrustumPlane : MonoBehaviour
 {
     private static GameObject CreateCube(Vector3 cubePos, Color color, Vector3 scale)
     {
@@ -143,9 +144,7 @@ public class Test : MonoBehaviour
             Debug.Log("Type: " + type + " - " + aWorldFrustumPlanes[i]);
         }
     }
-
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         Camera cameraMain = GetComponent<Camera>();
@@ -179,7 +178,6 @@ public class Test : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
