@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 798b775bd9bde424897a987a44e595b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -383,8 +383,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1000
-  field of view: 75
+  far clip plane: 20
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -429,6 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6487ee792e3dd4673b1f358f524b7fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matCornerNear: {fileID: 2100000, guid: 98a9bbef336d6104ba4bc2d8928e19f7, type: 2}
+  matCornerFar: {fileID: 2100000, guid: 12f8acbd8debfc140a956c81852f6523, type: 2}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a43deb6045fe40f28297bbdb9b2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vCameraPos: {x: 0, y: 3, z: -3}
+  vCameraPos: {x: 0, y: 4, z: -4}
   vCameraLookAt: {x: 0, y: 0, z: 0}
   vCameraUp: {x: 0, y: 1, z: 0}
   camera: {fileID: 0}

@@ -1,16 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 [RequireComponent(typeof(Camera))]
 public class TestFrustumPlane : MonoBehaviour
 {
-    private static GameObject CreateCube(Vector3 cubePos, Color color, Vector3 scale)
+    [SerializeField]
+    public Material matCornerNear;
+    [SerializeField]
+    public Material matCornerFar;
+
+
+    private static GameObject CreateCube(Vector3 cubePos, Color color, Vector3 scale, Material mat)
     {
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cube.transform.position = cubePos;
         cube.transform.localScale = scale;
-        cube.GetComponent<Renderer>().sharedMaterial.color = color;
+        cube.GetComponent<Renderer>().sharedMaterial = mat;
 
         return cube;
     }
@@ -61,16 +69,16 @@ public class TestFrustumPlane : MonoBehaviour
         Vector4 v7 = cameraMain.cameraToWorldMatrix * new Vector4(fFarRight, fFarBottom, -fFarZ, 1.0f);
 
         Vector3 vScale = new Vector3(0.01f, 0.01f, 0.01f);
-		CreateCube(v0, Color.red, vScale);
-		CreateCube(v1, Color.red, vScale);
-		CreateCube(v2, Color.red, vScale);
-		CreateCube(v3, Color.red, vScale);
+		CreateCube(v0, Color.red, vScale, this.matCornerNear);
+		CreateCube(v1, Color.red, vScale, this.matCornerNear);
+		CreateCube(v2, Color.red, vScale, this.matCornerNear);
+		CreateCube(v3, Color.red, vScale, this.matCornerNear);
 
         vScale = Vector3.one;
-        CreateCube(v4, Color.green, vScale);
-		CreateCube(v5, Color.green, vScale);
-		CreateCube(v6, Color.green, vScale);
-		CreateCube(v7, Color.green, vScale);
+        CreateCube(v4, Color.green, vScale, this.matCornerFar);
+		CreateCube(v5, Color.green, vScale, this.matCornerFar);
+		CreateCube(v6, Color.green, vScale, this.matCornerFar);
+		CreateCube(v7, Color.green, vScale, this.matCornerFar);
 
 		Debug.Log("v0: " + v0);
         Debug.Log("v1: " + v1);

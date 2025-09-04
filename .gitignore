@@ -60,7 +60,9 @@ crashlytics-build.properties
 
 .vscode
 
+Sample/*/.vs
 Sample/*/Library
 Sample/*/Logs
+Sample/*/obj
 Sample/*/Temp
 Sample/*/UserSettings
