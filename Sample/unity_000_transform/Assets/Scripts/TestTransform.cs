@@ -12,22 +12,25 @@ public class TestTransform : MonoBehaviour
     public Camera camera;
 
 
-    void Awake()
-    {
-        this.camera = GetComponent<Camera>();
-        if (this.camera == null)
-        {
-            Debug.LogError("TestTransform.Awake: Can not get Camera component !");
-            return;
-        }
-        transform.localPosition = this.vCameraPos;
-        transform.LookAt(this.vCameraLookAt, this.vCameraUp);
+	void Awake()
+	{
+		this.camera = GetComponent<Camera>();
+		if (this.camera == null)
+		{
+			Debug.LogError("TestTransform.Awake: Can not get Camera component !");
+			return;
+		}
+		transform.localPosition = this.vCameraPos;
+		transform.LookAt(this.vCameraLookAt, this.vCameraUp);
 
-        Matrix4x4 matView = this.camera.worldToCameraMatrix;
-        logMatrix44("Camera View: ", matView);
+		Matrix4x4 matView = this.camera.worldToCameraMatrix;
+		logMatrix44("Camera View: ", matView);
 
-        Matrix4x4 matProjection = this.camera.projectionMatrix;
-        logMatrix44("Camera Projection: ", matProjection);
+		Matrix4x4 matProjection = this.camera.projectionMatrix;
+		logMatrix44("Camera Projection: ", matProjection);
+
+        Matrix4x4 matViewProjection = matProjection * matView;
+		logMatrix44("Camera View Projection: ", matViewProjection);
     }
     private void logMatrix44(string name, Matrix4x4 mat44)
     {
